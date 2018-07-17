@@ -9,10 +9,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void preenche( char mat[][16], double v[][2], int g){
+void preenche( char **mat, double **v, int g){
 for (int a = 0; a < g; a++){
     printf ("Informe o nome do %d aluno: ", a+1);
-    scanf ("%s", mat[a]);
+    scanf (" %[^\n]s", mat[a]);
     for (int b = 0; b < 2; b++){
         printf ("Informe a %d nota: ", b+1);
         scanf ("%lf", &v[a][b]);
@@ -20,7 +20,7 @@ for (int a = 0; a < g; a++){
 }
 }
 
-void media (double v[][2], double m[], int n){
+void media (double **v, double m[], int n){
 double soma = 0.0;
 for (int a = 0; a < n; a++){
     for (int b = 0; b < 2; b++){
@@ -31,7 +31,7 @@ for (int a = 0; a < n; a++){
 }
 }
 
-void imprimi(char nome[][16], double notas[][2], double medias[], int n){
+void imprimi(char **nome, double **notas, double *medias, int n){
 for(int a =0; a < n; a++){
     printf ("Aluno %d\nnome: %s", a+1, nome[a]);
     for(int b = 0; b < 2; b++){

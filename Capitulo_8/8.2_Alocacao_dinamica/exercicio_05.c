@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void leitura(int v[][1000], int n){
+void leitura(int **v, int n){
 for (int a = 0; a < n; a++){
     for (int b = 0; b < n; b++){
     printf ("[%d][%d]: ", a+1, b+1);
@@ -18,7 +18,7 @@ for (int a = 0; a < n; a++){
 }
 }
 
-void produto(int v[][1000], int v2[][1000], int v3[][1000], int n){
+void produto(int **v, int **v2, int **v3, int n){
 int aux = 0;
 for(int a = 0; a < n; a++){
     for (int c = 0; c < n; c++){
@@ -33,7 +33,7 @@ for(int a = 0; a < n; a++){
 }
 }
 
-void imprimi(int v[][1000], int n){
+void imprimi(int **v, int n){
 printf("\n");
 for (int a = 0; a<n; a++){
     for(int b = 0; b<n; b++){
@@ -49,11 +49,11 @@ printf ("Informe o tamanho das matrizes: ");
 scanf ("%d", &y);
 a = (int**) malloc(y * (sizeof(int*)));
 b = (int**) malloc(y * (sizeof(int*)));
-c = (int**) malloc(y * (sizeof(int*)));
+c = (int**) calloc(y, (sizeof(int*)));
 for (int v = 0; v < y; v++){
     a[v] = (int*) malloc(y * (sizeof(int)));
     b[v] = (int*) malloc(y * (sizeof(int)));
-    c[v] = (int*) malloc(y * (sizeof(int)));
+    c[v] = (int*) calloc(y, (sizeof(int)));
 }
 leitura(a, y);
 leitura(b, y);
@@ -62,6 +62,11 @@ imprimi(b, y);
 imprimi(c, y);
 produto (a, b, c, y);
 imprimi(c, y);
+for (int i = 0; a < y; a++){
+free(a[i]);
+free(b[i]);
+free(c[i]);
+}
 free(a);
 free(b);
 free(c);

@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void preenche(int v[], int y){
+void preenche(int *v, int y){
 for (int a = 0; a < y; a++){
     printf ("Informe o %d numero: ", a+1);
     scanf("%d", &v[a]);
